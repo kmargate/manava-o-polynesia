@@ -1592,7 +1592,7 @@
   }
 
   function loadEvents() {
-    const el = document.getElementById('ev-list');
+    var el = document.getElementById('ev-list');
     if (!el) return;
     if (!EVENTS_CSV_URL) {
       el.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:Arial,sans-serif;font-size:14px;padding:16px 0">No upcoming events at this time.</p>';
@@ -1600,21 +1600,24 @@
     }
     el.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:Arial,sans-serif;font-size:14px;padding:16px 0">Loading events…</p>';
     fetch(EVENTS_CSV_URL)
-      .then(r => r.text())
-      .then(text => {
-        const rows = parseCSV(text).filter(r => r[0] && r[0].trim());
+      .then(function(r) { return r.text(); })
+      .then(function(text) {
+        var rows = parseCSV(text).filter(function(r) { return r[0] && r[0].trim(); });
         if (!rows.length) {
           el.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:Arial,sans-serif;font-size:14px;padding:16px 0">No upcoming events at this time.</p>';
           return;
         }
-        el.innerHTML = rows.map(r => {
-          const month = esc(r[0] || ''), day = esc(r[1] || ''), name = esc(r[2] || ''), meta = esc(r[3] || ''), btnText = esc(r[4] || ''), btnUrl = r[5] ? r[5].trim() : '';
-          // const validUrl = /^https?:\/\//.test(btnUrl);
-          // const btn = btnText ? (validUrl ? \`<a href="\${esc(btnUrl)}" class="ev-btn" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">\${btnText}</a>\` : \`<button class="ev-btn">\${btnText}</button>\`) : '';
-          return \`<div class="ev"><div class="ev-date"><div class="ev-mo">\${month}</div><div class="ev-day">\${day}</div></div><div class="ev-div"></div><div class="ev-info"><div class="ev-name">\${name}</div><div class="ev-meta">\${meta}</div></div></div>\`;
+        el.innerHTML = rows.map(function(r) {
+          var month = esc(r[0] || ''), day = esc(r[1] || ''), name = esc(r[2] || ''), meta = esc(r[3] || '');
+          // btn_text (r[4]) and btn_url (r[5]) are stored in the sheet for future use
+          return '<div class="ev">' +
+            '<div class="ev-date"><div class="ev-mo">' + month + '</div><div class="ev-day">' + day + '</div></div>' +
+            '<div class="ev-div"></div>' +
+            '<div class="ev-info"><div class="ev-name">' + name + '</div><div class="ev-meta">' + meta + '</div></div>' +
+            '</div>';
         }).join('');
       })
-      .catch(() => {
+      .catch(function() {
         el.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:Arial,sans-serif;font-size:14px;padding:16px 0">No upcoming events at this time.</p>';
       });
   }
