@@ -1399,52 +1399,7 @@
         loading="lazy" class="ph-logo" alt="" />
     </div>
     <div class="sec">
-      <div class="ev-list">
-        <div class="ev">
-          <div class="ev-date">
-            <div class="ev-mo">Jun</div>
-            <div class="ev-day">14</div>
-          </div>
-          <div class="ev-div"></div>
-          <div class="ev-info">
-            <div class="ev-name">Summer Luau Showcase 2026</div>
-            <div class="ev-meta">Memorial Park · Colorado Springs, CO · 5:00 PM · Free admission</div>
-          </div><button class="ev-btn">RSVP Free</button>
-        </div>
-        <div class="ev">
-          <div class="ev-date">
-            <div class="ev-mo">Jul</div>
-            <div class="ev-day">4</div>
-          </div>
-          <div class="ev-div"></div>
-          <div class="ev-info">
-            <div class="ev-name">Independence Day Cultural Festival</div>
-            <div class="ev-meta">Acacia Park · Colorado Springs, CO · 2:00 PM</div>
-          </div><button class="ev-btn">Details</button>
-        </div>
-        <div class="ev">
-          <div class="ev-date">
-            <div class="ev-mo">Aug</div>
-            <div class="ev-day">22</div>
-          </div>
-          <div class="ev-div"></div>
-          <div class="ev-info">
-            <div class="ev-name">Back to School Hula Workshop</div>
-            <div class="ev-meta">1845 N Academy Blvd · Colorado Springs · 10:00 AM · All ages</div>
-          </div><button class="ev-btn">Register</button>
-        </div>
-        <div class="ev">
-          <div class="ev-date">
-            <div class="ev-mo">Oct</div>
-            <div class="ev-day">11</div>
-          </div>
-          <div class="ev-div"></div>
-          <div class="ev-info">
-            <div class="ev-name">Annual Polynesian Night Gala</div>
-            <div class="ev-meta">Antlers Hotel · Colorado Springs, CO · 6:30 PM · Fundraiser</div>
-          </div><button class="ev-btn">Buy Tickets</button>
-        </div>
-      </div>
+      <div class="ev-list" id="ev-list"></div>
     </div>
   </div>
 
@@ -1596,6 +1551,7 @@
     document.getElementById('page-' + name).classList.add('active');
     document.querySelectorAll('.nav-links a').forEach(t => t.classList.remove('cur'));
     if (el) el.classList.add('cur');
+    if (name === 'events') loadEvents();
   }
 
   function toggleNav(btn) {
@@ -1606,6 +1562,63 @@
   function closeNav() {
     document.querySelector('.nav-toggle').classList.remove('open');
     document.querySelector('.nav-links').classList.remove('open');
+  }
+
+  // Google Sheet CSV URL — paste your published sheet URL here
+  const EVENTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQL_MPtFy14e67A8s1GFB7rqf070tUKBcrZFjWDjBqg-1frbKZmS42ThwmNsn3mYyEMsDyeN0doTBQa/pub?output=csv';
+
+  function parseCSV(text) {
+    const rows = [];
+    const lines = text.split(/
+?
+/);
+    for (let i = 1; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) continue;
+      const fields = [];
+      let field = '', inQ = false;
+      for (let j = 0; j < line.length; j++) {
+        const c = line[j];
+        if (c === '"') { inQ = !inQ; }
+        else if (c === ',' && !inQ) { fields.push(field); field = ''; }
+        else { field += c; }
+      }
+      fields.push(field);
+      rows.push(fields);
+    }
+    return rows;
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function loadEvents() {
+    const el = document.getElementById('ev-list');
+    if (!el) return;
+    if (!EVENTS_CSV_URL) {
+      el.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:Arial,sans-serif;font-size:14px;padding:16px 0">No upcoming events at this time.</p>';
+      return;
+    }
+    el.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:Arial,sans-serif;font-size:14px;padding:16px 0">Loading events…</p>';
+    fetch(EVENTS_CSV_URL)
+      .then(r => r.text())
+      .then(text => {
+        const rows = parseCSV(text).filter(r => r[0] && r[0].trim());
+        if (!rows.length) {
+          el.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:Arial,sans-serif;font-size:14px;padding:16px 0">No upcoming events at this time.</p>';
+          return;
+        }
+        el.innerHTML = rows.map(r => {
+          const month = esc(r[0] || ''), day = esc(r[1] || ''), name = esc(r[2] || ''), meta = esc(r[3] || ''), btnText = esc(r[4] || ''), btnUrl = r[5] ? r[5].trim() : '';
+          // const validUrl = /^https?:\/\//.test(btnUrl);
+          // const btn = btnText ? (validUrl ? \`<a href="\${esc(btnUrl)}" class="ev-btn" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block">\${btnText}</a>\` : \`<button class="ev-btn">\${btnText}</button>\`) : '';
+          return \`<div class="ev"><div class="ev-date"><div class="ev-mo">\${month}</div><div class="ev-day">\${day}</div></div><div class="ev-div"></div><div class="ev-info"><div class="ev-name">\${name}</div><div class="ev-meta">\${meta}</div></div></div>\`;
+        }).join('');
+      })
+      .catch(() => {
+        el.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:Arial,sans-serif;font-size:14px;padding:16px 0">No upcoming events at this time.</p>';
+      });
   }
 </script>
 </body>
