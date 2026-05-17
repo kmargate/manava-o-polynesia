@@ -792,6 +792,31 @@
     font-family: Arial, sans-serif;
   }
 
+  .footer-social {
+    display: flex;
+    gap: 14px;
+    justify-content: flex-end;
+    margin-bottom: 6px;
+  }
+
+  .footer-social a {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+  }
+
+  .footer-social a:hover {
+    color: #f2cf1d;
+  }
+
+  a.soc {
+    text-decoration: none;
+  }
+
   .page {
     display: none;
   }
@@ -1474,8 +1499,7 @@
           </div>
           <div class="ci">
             <h4>Follow our journey</h4>
-            <div class="soc-row"><button class="soc">Facebook</button><button class="soc">Instagram</button><button
-                class="soc">YouTube</button><button class="soc">TikTok</button></div>
+            <div class="soc-row"><a class="soc" href="https://www.facebook.com/manavaopolynesia" target="_blank" rel="noopener">Facebook</a><a class="soc" href="https://www.instagram.com/manavaopolynesia/" target="_blank" rel="noopener">Instagram</a><button class="soc" style="display:none">YouTube</button><button class="soc" style="display:none">TikTok</button></div>
           </div>
           <div class="donate-box">
             <h4>Support our nonprofit</h4>
@@ -1505,7 +1529,13 @@
       <a href="#" onclick="gp('gallery',null);return false;">Gallery</a>
       <a href="#" onclick="gp('contact',null);return false;">Contact</a>
     </div>
-    <div class="footer-copy">© 2026 Mānava O Polynesia</div>
+    <div style="text-align:right;">
+      <div class="footer-social">
+        <a href="https://www.facebook.com/manavaopolynesia" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/manavaopolynesia/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="footer-copy">© 2026 Mānava O Polynesia</div>
+    </div>
   </div>
 </div>
 <script>
