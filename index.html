@@ -585,6 +585,15 @@
     display: block;
   }
 
+  .gc-iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1596,8 +1605,15 @@
         }
         el.innerHTML = rows.map(function(r) {
           var fileUrl = r[0] || '', label = esc(r[1] || ''), tall = (r[2] || '').trim().toLowerCase() === 'yes';
+          var type = (r[3] || '').trim().toLowerCase() === 'video' ? 'video' : 'image';
           var fileId = fileUrl.match(/\/d\/([^/]+)/);
           if (!fileId) return '';
+          if (type === 'video') {
+            var src = 'https://drive.google.com/file/d/' + fileId[1] + '/preview';
+            return '<div class="gc' + (tall ? ' tall' : '') + '">' +
+              '<iframe src="' + src + '" class="gc-iframe" allowfullscreen></iframe>' +
+              '</div>';
+          }
           var src = 'https://drive.google.com/thumbnail?id=' + fileId[1] + '&sz=w800';
           return '<div class="gc' + (tall ? ' tall' : '') + '">' +
             '<img src="' + src + '" class="gc-img" alt="' + label + '" loading="lazy" />' +
