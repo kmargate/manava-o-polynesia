@@ -800,21 +800,28 @@
   }
 
   .footer-social a {
-    font-size: 10px;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.55);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-family: Arial, sans-serif;
+    color: #f2cf1d;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    opacity: 0.85;
+    transition: opacity 0.15s;
   }
 
   .footer-social a:hover {
-    color: #f2cf1d;
+    opacity: 1;
   }
 
   a.soc {
     text-decoration: none;
+    color: #f2cf1d;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  a.soc:hover {
+    border-color: #f2cf1d;
   }
 
   .page {
@@ -1499,7 +1506,7 @@
           </div>
           <div class="ci">
             <h4>Follow our journey</h4>
-            <div class="soc-row"><a class="soc" href="https://www.facebook.com/manavaopolynesia" target="_blank" rel="noopener">Facebook</a><a class="soc" href="https://www.instagram.com/manavaopolynesia/" target="_blank" rel="noopener">Instagram</a><button class="soc" style="display:none">YouTube</button><button class="soc" style="display:none">TikTok</button></div>
+            <div class="soc-row"><a class="soc" href="https://www.facebook.com/manavaopolynesia" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a class="soc" href="https://www.instagram.com/manavaopolynesia/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><button class="soc" style="display:none">YouTube</button><button class="soc" style="display:none">TikTok</button></div>
           </div>
           <div class="donate-box">
             <h4>Support our nonprofit</h4>
@@ -1531,8 +1538,12 @@
     </div>
     <div style="text-align:right;">
       <div class="footer-social">
-        <a href="https://www.facebook.com/manavaopolynesia" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://www.instagram.com/manavaopolynesia/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/manavaopolynesia" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/manavaopolynesia/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
       </div>
       <div class="footer-copy">© 2026 Mānava O Polynesia</div>
     </div>
