@@ -1170,6 +1170,13 @@
       grid-auto-rows: 130px;
     }
   }
+
+  /* Touch devices: labels always visible, video cells taller */
+  @media (hover: none) {
+    .gc { cursor: default; }
+    .gc .gh { opacity: 1; }
+    .gc.video { grid-row: span 2; }
+  }
 </style>
 </head>
 <body>
@@ -1737,7 +1744,7 @@
           if (!fileId) return '';
           if (type === 'video') {
             var src = 'https://drive.google.com/file/d/' + fileId[1] + '/preview';
-            return '<div class="gc' + (tall ? ' tall' : '') + '">' +
+            return '<div class="gc video' + (tall ? ' tall' : '') + '">' +
               '<iframe src="' + src + '" class="gc-iframe" allowfullscreen></iframe>' +
               '</div>';
           }
