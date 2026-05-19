@@ -1490,17 +1490,20 @@
       <div class="contact-grid">
         <div class="cform">
           <h3>Send us a message</h3>
-          <div class="fg"><label>Your name</label><input type="text" placeholder="Full name" /></div>
-          <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com" /></div>
-          <div class="fg"><label>I'm interested in</label><select>
-              <option>Attending a performance</option>
-              <option>Booking us for an event</option>
-              <option>Dance classes</option>
-              <option>Volunteering</option>
-              <option>Donating / Sponsoring</option>
-            </select></div>
-          <div class="fg"><label>Message</label><textarea placeholder="Tell us more..."></textarea></div>
-          <button class="sub-btn">Send message</button>
+          <form id="contact-form" onsubmit="return false;">
+            <div class="fg"><label>Your name</label><input id="cf-name" type="text" placeholder="Full name" maxlength="40" /></div>
+            <div class="fg"><label>Email</label><input id="cf-email" type="email" placeholder="you@email.com" maxlength="254" /></div>
+            <div class="fg"><label>I'm interested in</label><select id="cf-interest">
+                <option>Attending a performance</option>
+                <option>Booking us for an event</option>
+                <option>Dance classes</option>
+                <option>Volunteering</option>
+                <option>Donating / Sponsoring</option>
+              </select></div>
+            <div class="fg"><label>Message</label><textarea id="cf-message" placeholder="Tell us more..." maxlength="500"></textarea></div>
+            <div id="cf-msg" style="font-size:12px;font-family:Arial,sans-serif;margin-bottom:8px;display:none;"></div>
+            <button class="sub-btn" onclick="submitContactForm()">Send message</button>
+          </form>
         </div>
         <div class="cinfo">
           <div class="ci">
@@ -1577,6 +1580,41 @@
   function closeNav() {
     document.querySelector('.nav-toggle').classList.remove('open');
     document.querySelector('.nav-links').classList.remove('open');
+  }
+
+  function submitContactForm() {
+    var name = document.getElementById('cf-name').value.trim();
+    var email = document.getElementById('cf-email').value.trim();
+    var message = document.getElementById('cf-message').value.trim();
+    var feedback = document.getElementById('cf-msg');
+    var emailPattern = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+
+    feedback.style.display = 'none';
+    feedback.textContent = '';
+
+    if (!name) {
+      feedback.style.color = '#ff6b6b';
+      feedback.textContent = 'Please enter your name.';
+      feedback.style.display = 'block';
+      return;
+    }
+    if (!email || !emailPattern.test(email)) {
+      feedback.style.color = '#ff6b6b';
+      feedback.textContent = 'Please enter a valid email address.';
+      feedback.style.display = 'block';
+      return;
+    }
+    if (!message) {
+      feedback.style.color = '#ff6b6b';
+      feedback.textContent = 'Please enter a message.';
+      feedback.style.display = 'block';
+      return;
+    }
+
+    feedback.style.color = '#f2cf1d';
+    feedback.textContent = 'Thanks! We’ll be in touch soon.';
+    feedback.style.display = 'block';
+    document.getElementById('contact-form').reset();
   }
 
   // Google Sheet CSV URL — paste your published sheet URL here
