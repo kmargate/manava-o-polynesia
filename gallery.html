@@ -132,7 +132,7 @@
           if (type === 'video') {
             var src = 'https://drive.google.com/file/d/' + fileId[1] + '/preview';
             return '<div class="gc video' + (tall ? ' tall' : '') + '">' +
-              '<iframe src="' + src + '" class="gc-iframe" allowfullscreen></iframe>' +
+              '<iframe src="' + src + '" class="gc-iframe" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>' +
               '</div>';
           }
           var src = 'https://drive.google.com/thumbnail?id=' + fileId[1] + '&sz=w800';
