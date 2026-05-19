@@ -568,6 +568,12 @@
     display: block;
   }
 
+  .gc.video .gc-iframe {
+    top: -48px;
+    height: calc(100% + 48px);
+  }
+
+
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
