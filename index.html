@@ -1500,7 +1500,9 @@
                 <option>Volunteering</option>
                 <option>Donating / Sponsoring</option>
               </select></div>
-            <div class="fg"><label>Message</label><textarea id="cf-message" placeholder="Tell us more..." maxlength="2000"></textarea></div>
+            <div class="fg"><label>Message</label><textarea id="cf-message" placeholder="Tell us more..." maxlength="2000" oninput="updateCharCount()"></textarea>
+              <div id="cf-char-count" style="font-size:11px;font-family:Arial,sans-serif;color:rgba(255,255,255,0.4);text-align:right;margin-top:4px;">0 / 2000</div>
+            </div>
             <div id="cf-msg" style="font-size:12px;font-family:Arial,sans-serif;margin-bottom:8px;display:none;"></div>
             <button class="sub-btn" onclick="submitContactForm()">Send message</button>
           </form>
@@ -1582,6 +1584,15 @@
     document.querySelector('.nav-links').classList.remove('open');
   }
 
+  function updateCharCount() {
+    var ta = document.getElementById('cf-message');
+    var counter = document.getElementById('cf-char-count');
+    var len = ta.value.length;
+    var max = 2000;
+    counter.textContent = len + ' / ' + max;
+    counter.style.color = len >= max ? '#ff6b6b' : 'rgba(255,255,255,0.4)';
+  }
+
   function submitContactForm() {
     var name = document.getElementById('cf-name').value.trim();
     var email = document.getElementById('cf-email').value.trim();
@@ -1612,9 +1623,11 @@
     }
 
     feedback.style.color = '#f2cf1d';
-    feedback.textContent = 'Thanks! We’ll be in touch soon.';
+    feedback.textContent = "Thanks! We'll be in touch soon.";
     feedback.style.display = 'block';
     document.getElementById('contact-form').reset();
+    document.getElementById('cf-char-count').textContent = '0 / 2000';
+    document.getElementById('cf-char-count').style.color = 'rgba(255,255,255,0.4)';
   }
 
   // Google Sheet CSV URL — paste your published sheet URL here
