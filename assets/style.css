@@ -1139,14 +1139,12 @@
     }
 
     .gal-grid {
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: 130px;
+      grid-template-columns: 1fr;
+      grid-auto-rows: 200px;
     }
 
     .gc.video {
-      grid-column: 1 / -1;
-      grid-row: span 1;
-      height: 220px;
+      height: 225px;
     }
   }
 
@@ -1154,4 +1152,7 @@
   @media (hover: none) {
     .gc { cursor: default; }
     .gc .gh { opacity: 1; }
+  }
+
+  @media (hover: none) and (min-width: 481px) {
     .gc.video { grid-row: span 2; }
