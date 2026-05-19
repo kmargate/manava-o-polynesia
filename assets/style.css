@@ -1142,6 +1142,12 @@
       grid-template-columns: repeat(2, 1fr);
       grid-auto-rows: 130px;
     }
+
+    .gc.video {
+      grid-column: 1 / -1;
+      grid-row: span 1;
+      height: 220px;
+    }
   }
 
   /* Touch devices: labels always visible, video cells taller */
