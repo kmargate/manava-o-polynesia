@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donate Button Setup Guide — Mānava O Polynesia</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      background: #0a0a0a;
+      color: #fff;
+      line-height: 1.65;
+      padding: 48px 24px;
+    }
+
+    .wrap { max-width: 760px; margin: 0 auto; }
+
+    .doc-title {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: #f2cf1d;
+      margin-bottom: 6px;
+    }
+
+    .doc-sub {
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #222;
+    }
+
+    .phase {
+      margin-bottom: 44px;
+    }
+
+    .phase-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #f2cf1d;
+      margin-bottom: 6px;
+    }
+
+    .phase-title {
+      font-family: Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #222;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      background: #111;
+      border: 1px solid #222;
+      border-left: 3px solid #f2cf1d;
+      border-radius: 2px;
+      padding: 16px 18px;
+    }
+
+    .step-num {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #f2cf1d;
+      min-width: 24px;
+      line-height: 1.3;
+    }
+
+    .step-body h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .step-body p {
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .step-body p:last-child { margin-bottom: 0; }
+
+    .step-body a {
+      color: #f2cf1d;
+      text-decoration: none;
+    }
+
+    .step-body a:hover { text-decoration: underline; }
+
+    .step-body code {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 2px;
+      padding: 1px 5px;
+      font-size: 12px;
+      color: #f2cf1d;
+      font-family: monospace;
+    }
+
+    .callout {
+      background: #111;
+      border: 1px solid #222;
+      border-top: 2px solid #f2cf1d;
+      border-radius: 2px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+    }
+
+    .callout strong { color: #fff; }
+
+    .tag {
+      display: inline-block;
+      background: #f2cf1d;
+      color: #000;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      padding: 2px 6px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    .tag.optional {
+      background: transparent;
+      border: 1px solid #444;
+      color: rgba(255,255,255,0.4);
+    }
+
+    pre {
+      background: #060606;
+      border: 1px solid #222;
+      border-radius: 2px;
+      padding: 14px 16px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+      font-family: monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin-top: 10px;
+    }
+
+    .fee-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .fee-table th {
+      text-align: left;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      padding: 6px 10px;
+      border-bottom: 1px solid #222;
+    }
+
+    .fee-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #1a1a1a;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .fee-table td:first-child { color: #fff; font-weight: 700; }
+
+    .footer-note {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid #222;
+      color: rgba(255,255,255,0.3);
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="doc-title">Donate Button Setup Guide</div>
+    <div class="doc-sub">Mānava O Polynesia &mdash; Internal reference &mdash; Not a public page</div>
+
+    <!-- PHASE 1: LEGAL -->
+    <div class="phase">
+      <div class="phase-label">Phase 1</div>
+      <div class="phase-title">Legal Requirements</div>
+
+      <div class="callout">
+        <strong>Must complete before the donate button goes live.</strong> Adding an interactive donate button to a website constitutes a charitable solicitation under state law. Colorado requires registration before any solicitation occurs.
+      </div>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4><span class="tag">Required</span> Confirm 501(c)(3) status is active</h4>
+          <p>Verify the IRS determination letter is on file. Donors can only claim tax deductions for gifts to recognized 501(c)(3) organizations. You will need this letter for state registration.</p>
+          <p>Check status: <a href="https://apps.irs.gov/app/eos/" target="_blank" rel="noopener">IRS Tax Exempt Organization Search</a></p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4><span class="tag">Required</span> Register with the Colorado Secretary of State</h4>
+          <p>Every charitable organization soliciting donations from Colorado residents must register before soliciting — including via a website donate button.</p>
+          <p>
+            <strong>Cost:</strong> $10 filing fee, renewed annually<br />
+            <strong>Renewal deadline:</strong> 15th day of the 5th month after your fiscal year ends<br />
+            <strong>Required documents:</strong> IRS determination letter, most recent Form 990, list of officers and directors, EIN
+          </p>
+          <p><strong>Step 2a — Check if already registered (charity search):</strong><br />
+          Search by org name at <a href="https://www.coloradosos.gov/ccsa/pages/search/basic.xhtml" target="_blank" rel="noopener">coloradosos.gov/ccsa/pages/search/basic.xhtml</a>. If the org appears with an active status, skip to Step 2d (renew if needed).</p>
+          <p><strong>Step 2b — Confirm business entity is registered:</strong><br />
+          The org must be registered as a nonprofit corporation before filing for charitable solicitation. Look up the business entity at <a href="https://www.sos.state.co.us/biz/BusinessEntityCriteriaExt.do" target="_blank" rel="noopener">sos.state.co.us/biz/BusinessEntityCriteriaExt.do</a>. Search "Manava" or "Polynesia" and confirm it shows "Good Standing."</p>
+          <p><strong>Step 2c — Create a Colorado SOS account and file:</strong><br />
+          Create a user account and file the charitable organization registration at <a href="https://www.sos.state.co.us/ccsa/" target="_blank" rel="noopener">sos.state.co.us/ccsa</a>. All filings are done online. You will need up to 3 NTEE codes describing your programs — recommended codes for Mānava: <strong>A60</strong> (Folk Arts), <strong>A80</strong> (Cultural/Ethnic Awareness).</p>
+          <p><strong>Step 2d — Renew annually:</strong><br />
+          Registration must be renewed each year by the 15th day of the 5th month after your fiscal year ends (e.g., fiscal year ending Dec 31 → renew by May 15).</p>
+          <p>Questions: 303-894-2200 option 2 &mdash; <a href="mailto:charitable@coloradosos.gov">charitable@coloradosos.gov</a></p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4><span class="tag">Required</span> Set up donation acknowledgment process</h4>
+          <p>The IRS requires written acknowledgment for any single donation of <strong>$250 or more</strong>. This letter must state the amount donated, the date, and confirm no goods or services were provided in exchange.</p>
+          <p>Donorbox sends automated receipts to donors after each transaction — configure the receipt email in your campaign settings to meet this requirement.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4><span class="tag">Optional</span> Multi-state registration (future)</h4>
+          <p>If the site begins receiving donations from out-of-state donors on a recurring basis (more than $25,000/year or more than 50 donations from a single state), registration in that state is required. For now, Colorado registration is sufficient.</p>
+          <p>Reference: <a href="https://www.councilofnonprofits.org/running-nonprofit/fundraising-and-resource-development/charitable-solicitation-registration" target="_blank" rel="noopener">National Council of Nonprofits — Charitable Solicitation Registration</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 2: DONORBOX SETUP -->
+    <div class="phase">
+      <div class="phase-label">Phase 2</div>
+      <div class="phase-title">Donorbox Account &amp; Campaign Setup</div>
+
+      <div class="callout">
+        <strong>Payment processor note:</strong> You cannot accept donations directly into a bank account — a payment processor is required. Donorbox supports Stripe and PayPal. <strong>Stripe is recommended</strong>: it supports credit/debit cards, ACH bank transfers, Apple Pay, and Google Pay, and auto-deposits to your bank every 2 business days.
+        <table class="fee-table" style="margin-top:12px;">
+          <thead>
+            <tr>
+              <th>Processor</th>
+              <th>Per-transaction fee (nonprofit rate)</th>
+              <th>Transfer to bank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Stripe</td>
+              <td>2.2% + $0.30</td>
+              <td>Auto every 2 business days</td>
+            </tr>
+            <tr>
+              <td>PayPal</td>
+              <td>1.99% + $0.49</td>
+              <td>Manual — you initiate</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:10px;">Donorbox adds a <strong>1.5% platform fee</strong> (donors are prompted to cover it — most do). No monthly or setup fee at the starter tier.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Create a free Donorbox account</h4>
+          <p>Go to <a href="https://donorbox.org" target="_blank" rel="noopener">donorbox.org</a>, select "Nonprofit," and enter your EIN. Donorbox will pull your organization's details automatically from the IRS database.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Connect Stripe</h4>
+          <p>Inside Donorbox, go to <strong>Settings → Payment Gateways</strong> and connect Stripe. Donorbox walks you through opening a Stripe account (or linking an existing one) and connecting your bank account for deposits.</p>
+          <p>Stripe will require basic business verification: EIN, bank account details, and a representative's identity info.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Create a campaign</h4>
+          <p>In Donorbox, create a new campaign (e.g., "Support Mānava O Polynesia"). Configure suggested donation amounts, a campaign description, and your receipt email. Publish the campaign.</p>
+          <p>Copy your <strong>campaign URL slug</strong> — it will look like: <code>https://donorbox.org/manava-o-polynesia</code></p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Configure receipt email</h4>
+          <p>In campaign settings, customize the automated receipt email. Include the org name, 501(c)(3) status statement, and confirmation that no goods or services were exchanged — this satisfies IRS acknowledgment requirements for gifts of $250+.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 3: CODE CHANGES -->
+    <div class="phase">
+      <div class="phase-label">Phase 3</div>
+      <div class="phase-title">Code Changes — <code>index.html</code></div>
+
+      <div class="callout">
+        There are two donate elements in the site. Neither is currently functional. Both will be wired to the Donorbox popup — clicking them opens a polished donation form overlay without leaving the page.
+      </div>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Add Donorbox popup script to <code>&lt;head&gt;</code></h4>
+          <p>Add the following two lines before the closing <code>&lt;/head&gt;</code> tag. Replace <code>YOUR-CAMPAIGN-SLUG</code> with your actual Donorbox campaign URL slug.</p>
+          <pre>&lt;script src="https://donorbox.org/install-popup-button.js" type="text/javascript" defer&gt;&lt;/script&gt;
+&lt;script&gt;window.DonorBox = { widgetLinkClassName: 'custom-dbox-popup' }&lt;/script&gt;</pre>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Wire up the nav "Donate" link — line 1172</h4>
+          <p>The existing <code>&lt;a class="nav-donate"&gt;</code> element needs an <code>href</code> and the Donorbox popup class added.</p>
+          <p><strong>Before:</strong></p>
+          <pre>&lt;a class="nav-donate"&gt;Donate&lt;/a&gt;</pre>
+          <p><strong>After:</strong></p>
+          <pre>&lt;a class="nav-donate custom-dbox-popup" href="https://donorbox.org/YOUR-CAMPAIGN-SLUG"&gt;Donate&lt;/a&gt;</pre>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Wire up the "Donate to our mission" button — line 1521</h4>
+          <p>The existing <code>&lt;button class="donate-btn"&gt;</code> has no action handler. Wrap it in an anchor tag to trigger the Donorbox popup.</p>
+          <p><strong>Before:</strong></p>
+          <pre>&lt;button class="donate-btn"&gt;Donate to our mission&lt;/button&gt;</pre>
+          <p><strong>After:</strong></p>
+          <pre>&lt;a href="https://donorbox.org/YOUR-CAMPAIGN-SLUG" class="custom-dbox-popup" style="display:block;"&gt;
+  &lt;button class="donate-btn"&gt;Donate to our mission&lt;/button&gt;
+&lt;/a&gt;</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 4: VERIFICATION -->
+    <div class="phase">
+      <div class="phase-label">Phase 4</div>
+      <div class="phase-title">Verification &amp; Go-Live</div>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Test locally before deploying</h4>
+          <p>Open <code>index.html</code> in a browser and click both donate elements. The Donorbox popup form should open as an overlay. Confirm both the nav link and the "Donate to our mission" button trigger it.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Make a test donation</h4>
+          <p>Use Stripe's test card (<code>4242 4242 4242 4242</code>, any future expiry, any CVV) to complete a test donation. Verify it appears in the Donorbox dashboard and in Stripe.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Confirm receipt email</h4>
+          <p>Make a test donation using a real email address. Verify the automated receipt email arrives and contains the required IRS acknowledgment language.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Deploy to live site</h4>
+          <p>Commit changes on <code>dev</code>, merge to <code>main</code>, and push. The Colorado SOS registration should be complete before this step.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      Internal reference — Mānava O Polynesia &mdash; Not a public-facing page. Do not deploy to production.
+    </div>
+
+  </div>
+</body>
+</html>
