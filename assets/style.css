@@ -429,6 +429,25 @@
     color: #000;
   }
 
+  .t-social {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .t-social a {
+    color: #f2cf1d;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+    display: flex;
+    align-items: center;
+  }
+
+  .t-social a:hover {
+    opacity: 1;
+  }
+
   .bb {
     background: transparent;
     color: #f2cf1d;
