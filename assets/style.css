@@ -319,8 +319,8 @@
   }
 
   .f-av {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     background: #f2cf1d;
     display: flex;
@@ -362,9 +362,9 @@
   }
 
   .founder-card .f-av {
-    width: 100px;
-    height: 100px;
-    font-size: 30px;
+    width: 200px;
+    height: 200px;
+    font-size: 52px;
     margin-bottom: 14px;
   }
 
