@@ -84,7 +84,7 @@
         <!-- ambient glow halo behind the ray -->
         <g opacity="0.28" filter="url(#mray-halo)" style="transform-box:fill-box;transform-origin:50% 50%;
                 animation:manta-float 7s ease-in-out infinite;">
-          <path fill="#f2cf1d" d="M 340,162 C 366,163 392,144 404,128 Q 410,140 430,134 Q 520,192 604,250 Q 622,264 610,278 Q 504,252 372,328 Q 354,338 340,344 Q 326,338 308,328 Q 176,252 70,278 Q 58,264 78,250 Q 160,192 250,134 Q 270,140 276,128 C 288,144 314,163 340,162" />
+          <path fill="#f2cf1d" style="animation:manta-flap 5s ease-in-out infinite;" d="M 340,162 C 366,163 392,144 404,128 Q 410,140 430,134 Q 520,192 604,250 Q 622,264 610,278 Q 504,252 372,328 Q 354,338 340,344 Q 326,338 308,328 Q 176,252 70,278 Q 58,264 78,250 Q 160,192 250,134 Q 270,140 276,128 C 288,144 314,163 340,162" />
           <path fill="#f2cf1d" d="M340,344 Q338,381 336,421 Q335,437 340,440 Q345,437 344,421 Q342,381 340,344 Z" />
         </g>
 
@@ -94,7 +94,7 @@
 
           <!-- wings + body: cephalic fin humps, diagonal leading edges, concave trailing edges -->
           <path fill="none" stroke="#f2cf1d" stroke-width="2" stroke-linejoin="round" opacity="0.55"
-            style="animation:manta-pulse 5s ease-in-out infinite;" d="M 340,162 C 366,163 392,144 404,128 Q 410,140 430,134 Q 520,192 604,250 Q 622,264 610,278 Q 504,252 372,328 Q 354,338 340,344 Q 326,338 308,328 Q 176,252 70,278 Q 58,264 78,250 Q 160,192 250,134 Q 270,140 276,128 C 288,144 314,163 340,162" />
+            style="animation:manta-pulse 5s ease-in-out infinite, manta-flap 5s ease-in-out infinite;" d="M 340,162 C 366,163 392,144 404,128 Q 410,140 430,134 Q 520,192 604,250 Q 622,264 610,278 Q 504,252 372,328 Q 354,338 340,344 Q 326,338 308,328 Q 176,252 70,278 Q 58,264 78,250 Q 160,192 250,134 Q 270,140 276,128 C 288,144 314,163 340,162" />
 
           <!-- tail (sways separately): narrows to waist then widens into blob -->
           <path fill="none" stroke="#f2cf1d" stroke-width="1.6" opacity="0.5" style="transform-box:fill-box;transform-origin:50% 0%;
