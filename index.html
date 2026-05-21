@@ -84,54 +84,30 @@
         <!-- ambient glow halo behind the ray -->
         <g opacity="0.28" filter="url(#mray-halo)" style="transform-box:fill-box;transform-origin:50% 50%;
                 animation:manta-float 7s ease-in-out infinite;">
-          <path fill="#f2cf1d" d="M340,178 Q320,180 302,173 Q286,165 275,150 Q285,164 300,173
-             Q200,215 80,292 Q40,310 42,330 Q60,342 92,330
-             Q170,308 265,318 Q300,323 340,325
-             Q380,323 415,318 Q510,308 588,330
-             Q620,342 638,330 Q640,310 600,292
-             Q480,215 380,173 Q395,164 405,150
-             Q394,165 378,173 Q360,180 340,178 Z" />
-          <path fill="#f2cf1d" d="M340,325 Q338,362 336,402 Q335,418 340,421
-             Q345,418 344,402 Q342,362 340,325 Z" />
+          <path fill="#f2cf1d" d="M 340,162 C 366,163 392,144 404,128 Q 410,140 430,134 Q 520,192 604,250 Q 622,264 610,278 Q 504,252 372,328 Q 354,338 340,344 Q 326,338 308,328 Q 176,252 70,278 Q 58,264 78,250 Q 160,192 250,134 Q 270,140 276,128 C 288,144 314,163 340,162" />
+          <path fill="#f2cf1d" d="M340,344 Q338,381 336,421 Q335,437 340,440 Q345,437 344,421 Q342,381 340,344 Z" />
         </g>
 
         <!-- main manta ray — floats and pulses -->
         <g style="transform-box:fill-box;transform-origin:50% 50%;
                 animation:manta-float 7s ease-in-out infinite;">
 
-          <!-- wings + body outline -->
+          <!-- wings + body: cephalic fin humps, diagonal leading edges, concave trailing edges -->
           <path fill="none" stroke="#f2cf1d" stroke-width="2" stroke-linejoin="round" opacity="0.55"
-            style="animation:manta-pulse 5s ease-in-out infinite;" d="M340,178
-             Q320,180 302,173
-             Q286,165 275,150
-             Q285,164 300,173
-             Q200,215 80,292
-             Q40,310 42,330
-             Q60,342 92,330
-             Q170,308 265,318
-             Q300,323 340,325
-             Q380,323 415,318
-             Q510,308 588,330
-             Q620,342 638,330
-             Q640,310 600,292
-             Q480,215 380,173
-             Q395,164 405,150
-             Q394,165 378,173
-             Q360,180 340,178 Z" />
+            style="animation:manta-pulse 5s ease-in-out infinite;" d="M 340,162 C 366,163 392,144 404,128 Q 410,140 430,134 Q 520,192 604,250 Q 622,264 610,278 Q 504,252 372,328 Q 354,338 340,344 Q 326,338 308,328 Q 176,252 70,278 Q 58,264 78,250 Q 160,192 250,134 Q 270,140 276,128 C 288,144 314,163 340,162" />
 
-          <!-- tail (sways separately) -->
+          <!-- tail (sways separately): narrows to waist then widens into blob -->
           <path fill="none" stroke="#f2cf1d" stroke-width="1.6" opacity="0.5" style="transform-box:fill-box;transform-origin:50% 0%;
                      animation:manta-pulse 5s ease-in-out infinite,
-                               manta-tail 3.5s ease-in-out infinite;" d="M340,325 Q338,362 336,402 Q335,418 340,421
-             Q345,418 344,402 Q342,362 340,325" />
+                               manta-tail 3.5s ease-in-out infinite;" d="M340,344 Q338,381 336,421 Q335,437 340,440 Q345,437 344,421 Q342,381 340,344" />
 
           <!-- body centre ridge -->
-          <line x1="340" y1="186" x2="340" y2="322" stroke="#f2cf1d" stroke-width="0.7" opacity="0.22" />
+          <line x1="340" y1="170" x2="340" y2="340" stroke="#f2cf1d" stroke-width="0.7" opacity="0.22" />
 
           <!-- gill slits -->
-          <line x1="327" y1="265" x2="353" y2="265" stroke="#f2cf1d" stroke-width="0.6" opacity="0.18" />
-          <line x1="324" y1="276" x2="356" y2="276" stroke="#f2cf1d" stroke-width="0.6" opacity="0.18" />
-          <line x1="322" y1="287" x2="358" y2="287" stroke="#f2cf1d" stroke-width="0.6" opacity="0.18" />
+          <line x1="327" y1="232" x2="353" y2="232" stroke="#f2cf1d" stroke-width="0.6" opacity="0.18" />
+          <line x1="324" y1="244" x2="356" y2="244" stroke="#f2cf1d" stroke-width="0.6" opacity="0.18" />
+          <line x1="322" y1="256" x2="358" y2="256" stroke="#f2cf1d" stroke-width="0.6" opacity="0.18" />
 
         </g>
 
