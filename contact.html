@@ -157,8 +157,10 @@
   function submitContactForm() {
     var name = document.getElementById('cf-name').value.trim();
     var email = document.getElementById('cf-email').value.trim();
+    var interest = document.getElementById('cf-interest').value;
     var message = document.getElementById('cf-message').value.trim();
     var feedback = document.getElementById('cf-msg');
+    var btn = document.querySelector('.sub-btn');
     var emailPattern = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
 
     feedback.style.display = 'none';
@@ -183,12 +185,37 @@
       return;
     }
 
-    feedback.style.color = '#f2cf1d';
-    feedback.textContent = "Thanks! We'll be in touch soon.";
-    feedback.style.display = 'block';
-    document.getElementById('contact-form').reset();
-    document.getElementById('cf-char-count').textContent = '0 / 2000';
-    document.getElementById('cf-char-count').style.color = 'rgba(255,255,255,0.4)';
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch('https://formspree.io/f/mlgvbqeo', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, interest: interest, message: message })
+    })
+    .then(function(res) {
+      if (res.ok) {
+        feedback.style.color = '#f2cf1d';
+        feedback.textContent = "Thanks! We'll be in touch soon.";
+        feedback.style.display = 'block';
+        document.getElementById('contact-form').reset();
+        document.getElementById('cf-char-count').textContent = '0 / 2000';
+        document.getElementById('cf-char-count').style.color = 'rgba(255,255,255,0.4)';
+      } else {
+        return res.json().then(function(data) {
+          throw new Error(data.errors ? data.errors.map(function(e) { return e.message; }).join(', ') : 'Submission failed.');
+        });
+      }
+    })
+    .catch(function(err) {
+      feedback.style.color = '#ff6b6b';
+      feedback.textContent = 'Something went wrong. Please email us directly at info@manavaopolynesia.org.';
+      feedback.style.display = 'block';
+    })
+    .finally(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    });
   }
 </script>
 </body>
