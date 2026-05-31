@@ -891,6 +891,18 @@
   .ph-logo {
     width: 90px;
     opacity: 0.7;
+    animation: manta-float 7s ease-in-out infinite;
+    display: block;
+  }
+
+  .ph-logo-link {
+    display: block;
+    line-height: 0;
+    transition: filter var(--t-med), opacity var(--t-med);
+  }
+  .ph-logo-link:hover .ph-logo {
+    opacity: 1;
+    filter: drop-shadow(0 2px 12px rgba(242,207,29,0.55));
   }
 
   @keyframes manta-float {
