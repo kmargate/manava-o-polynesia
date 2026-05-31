@@ -1,3 +1,9 @@
+  :root {
+    --t-fast: 0.18s ease;
+    --t-med:  0.28s ease;
+    --lift:   translateY(-3px);
+  }
+
   * {
     box-sizing: border-box;
     margin: 0;
@@ -1197,11 +1203,125 @@
     }
   }
 
+  /* ─── HOVER UPGRADES ─── */
+
+  /* Nav links: smooth transition + sliding underline */
+  .nav-links a { position: relative; transition: color var(--t-fast); }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -2px; left: 0;
+    width: 100%; height: 1px; background: #f2cf1d;
+    transform: scaleX(0); transform-origin: left center;
+    transition: transform var(--t-med);
+  }
+  .nav-links a:hover::after, .nav-links a.cur::after { transform: scaleX(1); }
+  .nav-donate::after { display: none; }
+
+  /* Footer links */
+  .footer-links a { transition: color var(--t-fast); }
+  .footer-links a:hover { color: #f2cf1d; }
+
+  /* Buttons: lift + glow */
+  .btn-gold, .btn-out, .ev-btn, .nav-donate, .sub-btn, .donate-btn {
+    transition: transform var(--t-fast), box-shadow var(--t-fast), filter var(--t-fast);
+  }
+  .btn-gold:hover, .nav-donate:hover {
+    transform: var(--lift);
+    box-shadow: 0 6px 20px rgba(242,207,29,0.28);
+    filter: brightness(1.08);
+  }
+  .btn-out:hover {
+    transform: var(--lift);
+    border-color: rgba(255,255,255,0.7);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  }
+  .ev-btn:hover {
+    transform: var(--lift);
+    background: rgba(242,207,29,0.08);
+    box-shadow: 0 4px 12px rgba(242,207,29,0.2);
+  }
+  .sub-btn:hover {
+    transform: var(--lift);
+    box-shadow: 0 6px 20px rgba(242,207,29,0.28);
+    filter: brightness(1.06);
+  }
+  .donate-btn:hover {
+    transform: var(--lift);
+    background: #111;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+  }
+
+  /* Cards: subtle lift */
+  .tile { transition: transform var(--t-med), box-shadow var(--t-med); }
+  .tile:hover { transform: var(--lift); box-shadow: 0 8px 28px rgba(0,0,0,0.45); }
+
+  .dark-card { transition: transform var(--t-med), border-color var(--t-med), box-shadow var(--t-med); }
+  .dark-card:hover { transform: var(--lift); border-color: #333; box-shadow: 0 8px 28px rgba(0,0,0,0.5); }
+
+  .gold-card { transition: transform var(--t-med), box-shadow var(--t-med); }
+  .gold-card:hover { transform: var(--lift); box-shadow: 0 8px 28px rgba(242,207,29,0.22); }
+
+  .tc { transition: transform var(--t-med), border-color var(--t-med), box-shadow var(--t-med); }
+  .tc:hover { transform: var(--lift); border-color: rgba(242,207,29,0.3); box-shadow: 0 8px 24px rgba(0,0,0,0.45); }
+
+  /* Event rows: tint + border pulse */
+  .ev { transition: background var(--t-fast), border-left-width var(--t-fast), padding-left var(--t-fast); }
+  .ev:hover { background: #161616; border-left-width: 5px; padding-left: 20px; }
+
+  /* Form focus glow */
+  .fg input, .fg select, .fg textarea {
+    transition: border-color var(--t-fast), box-shadow var(--t-fast);
+  }
+  .fg input:focus, .fg select:focus, .fg textarea:focus {
+    outline: none;
+    border-color: rgba(242,207,29,0.7);
+    box-shadow: 0 0 0 3px rgba(242,207,29,0.12);
+  }
+
+  /* Social pill buttons */
+  a.soc { transition: border-color var(--t-fast), color var(--t-fast); }
+  a.soc:hover { color: #f2cf1d; border-color: #f2cf1d; }
+
+  /* ─── SCROLL-TRIGGERED REVEAL ─── */
+
+  @keyframes revealUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(16px); }
+  .reveal.visible {
+    animation: revealUp 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .reveal.d1 { animation-delay: 0.06s; }
+  .reveal.d2 { animation-delay: 0.12s; }
+  .reveal.d3 { animation-delay: 0.18s; }
+  .reveal.d4 { animation-delay: 0.24s; }
+  .reveal.d5 { animation-delay: 0.30s; }
+  .reveal.d6 { animation-delay: 0.36s; }
+
   /* Touch devices: labels always visible, video cells taller */
   @media (hover: none) {
     .gc { cursor: default; }
     .gc .gh { opacity: 1; }
   }
 
+  @media (hover: none) {
+    .btn-gold, .btn-out, .ev-btn, .nav-donate, .sub-btn, .donate-btn,
+    .tile, .dark-card, .gold-card, .tc, .ev {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  }
+
   @media (hover: none) and (min-width: 481px) {
     .gc.video { grid-row: span 2; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal.visible { opacity: 1; transform: none; animation: none; }
+    .btn-gold, .btn-out, .ev-btn, .nav-donate, .sub-btn, .donate-btn,
+    .tile, .dark-card, .gold-card, .tc, .ev,
+    .nav-links a, .nav-links a::after, .footer-links a,
+    .fg input, .fg select, .fg textarea, a.soc {
+      transition: none;
+    }
+  }
