@@ -830,11 +830,13 @@
     display: flex;
     align-items: center;
     opacity: 0.85;
-    transition: opacity 0.15s;
+    transition: opacity var(--t-fast), transform var(--t-fast), filter var(--t-fast);
   }
 
   .footer-social a:hover {
     opacity: 1;
+    transform: var(--lift);
+    filter: drop-shadow(0 4px 8px rgba(242,207,29,0.45));
   }
 
   a.soc {
@@ -1306,9 +1308,11 @@
 
   @media (hover: none) {
     .btn-gold, .btn-out, .ev-btn, .nav-donate, .sub-btn, .donate-btn,
-    .tile, .dark-card, .gold-card, .tc, .ev {
+    .tile, .dark-card, .gold-card, .tc, .ev,
+    .footer-social a {
       transform: none !important;
       box-shadow: none !important;
+      filter: none !important;
     }
   }
 
@@ -1321,7 +1325,8 @@
     .btn-gold, .btn-out, .ev-btn, .nav-donate, .sub-btn, .donate-btn,
     .tile, .dark-card, .gold-card, .tc, .ev,
     .nav-links a, .nav-links a::after, .footer-links a,
-    .fg input, .fg select, .fg textarea, a.soc {
+    .fg input, .fg select, .fg textarea, a.soc,
+    .footer-social a {
       transition: none;
     }
   }
