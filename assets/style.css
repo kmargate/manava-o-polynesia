@@ -1300,6 +1300,29 @@
   .reveal.d5 { animation-delay: 0.30s; }
   .reveal.d6 { animation-delay: 0.36s; }
 
+  /* Footer logo: layout (replaces inline styles) */
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  /* Nav + footer logo hover: image banks like a manta ray turning */
+  .nav-logo img,
+  .footer-logo img {
+    transition: transform var(--t-med), filter var(--t-med);
+  }
+  .nav-logo:hover img,
+  .footer-logo:hover img {
+    transform: scale(1.1) rotate(-6deg);
+    filter: drop-shadow(0 2px 8px rgba(242,207,29,0.5));
+  }
+  .nav-brand-main { transition: color var(--t-fast); }
+  .nav-logo:hover .nav-brand-main { color: #f2cf1d; }
+  .footer-bn { transition: color var(--t-fast); }
+  .footer-logo:hover .footer-bn { color: #f2cf1d; }
+
   /* Hero entrance — staggered on page load */
   .hero-content .eyebrow {
     animation: revealUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both 0.15s;
@@ -1324,7 +1347,8 @@
   @media (hover: none) {
     .btn-gold, .btn-out, .ev-btn, .nav-donate, .sub-btn, .donate-btn,
     .tile, .dark-card, .gold-card, .tc, .ev,
-    .footer-social a {
+    .footer-social a,
+    .nav-logo img, .footer-logo img {
       transform: none !important;
       box-shadow: none !important;
       filter: none !important;
@@ -1346,7 +1370,8 @@
     .tile, .dark-card, .gold-card, .tc, .ev,
     .nav-links a, .nav-links a::after, .footer-links a,
     .fg input, .fg select, .fg textarea, a.soc,
-    .footer-social a {
+    .footer-social a,
+    .nav-logo img, .footer-logo img, .nav-brand-main, .footer-bn {
       transition: none;
     }
   }
