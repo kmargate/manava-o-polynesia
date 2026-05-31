@@ -1300,6 +1300,21 @@
   .reveal.d5 { animation-delay: 0.30s; }
   .reveal.d6 { animation-delay: 0.36s; }
 
+  /* Hero entrance — staggered on page load */
+  .hero-content .eyebrow {
+    animation: revealUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both 0.15s;
+  }
+  .hero-content .hero-title {
+    animation: revealUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both 0.3s;
+  }
+  .hero-content .hero-body {
+    animation: revealUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both 0.48s;
+  }
+  .hero-content .btn-gold,
+  .hero-content .btn-out {
+    animation: revealUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both 0.62s;
+  }
+
   /* Touch devices: labels always visible, video cells taller */
   @media (hover: none) {
     .gc { cursor: default; }
@@ -1322,6 +1337,11 @@
 
   @media (prefers-reduced-motion: reduce) {
     .reveal, .reveal.visible { opacity: 1; transform: none; animation: none; }
+    .hero-content .eyebrow,
+    .hero-content .hero-title,
+    .hero-content .hero-body,
+    .hero-content .btn-gold,
+    .hero-content .btn-out { animation: none; }
     .btn-gold, .btn-out, .ev-btn, .nav-donate, .sub-btn, .donate-btn,
     .tile, .dark-card, .gold-card, .tc, .ev,
     .nav-links a, .nav-links a::after, .footer-links a,
