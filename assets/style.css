@@ -1387,3 +1387,246 @@
       transition: none;
     }
   }
+
+/* ─── DONATE MODAL ─── */
+
+  .dm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.82);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .dm-overlay.open {
+    display: flex;
+  }
+
+  .dm-box {
+    display: flex;
+    max-width: 820px;
+    width: 100%;
+    background: #111;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    max-height: 90vh;
+  }
+
+  .dm-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.6;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .dm-close:hover {
+    opacity: 1;
+  }
+
+  .dm-left {
+    flex: 0 0 42%;
+    position: relative;
+    min-height: 420px;
+  }
+
+  .dm-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .dm-impact {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px 22px;
+    background: linear-gradient(transparent, rgba(255,255,255,0.92));
+  }
+
+  .dm-impact-title {
+    font-family: Georgia, serif;
+    font-size: 21px;
+    font-weight: 700;
+    color: #000;
+    margin: 6px 0 8px;
+    line-height: 1.3;
+  }
+
+  .dm-impact-body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: rgba(0,0,0,0.7);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .dm-right {
+    flex: 1;
+    padding: 32px 28px;
+    overflow-y: auto;
+  }
+
+  .dm-title {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    margin: 6px 0 20px;
+  }
+
+  .dm-tabs {
+    display: flex;
+    border-bottom: 1px solid #222;
+    margin-bottom: 22px;
+  }
+
+  .dm-tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    color: rgba(255,255,255,0.45);
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+
+  .dm-tab.active {
+    color: #f2cf1d;
+    border-bottom-color: #f2cf1d;
+  }
+
+  .dm-tab:hover:not(.active) {
+    color: rgba(255,255,255,0.75);
+  }
+
+  .dm-amounts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .dm-amt {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .dm-amt:hover:not(.active) {
+    border-color: #555;
+    background: #222;
+  }
+
+  .dm-amt.active {
+    background: #f2cf1d;
+    border-color: #f2cf1d;
+    color: #000;
+  }
+
+  .dm-amt-other {
+    grid-column: span 3;
+  }
+
+  .dm-other-wrap {
+    display: none;
+    margin-top: 12px;
+  }
+
+  .dm-currency-wrap {
+    position: relative;
+  }
+
+  .dm-currency-sym {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.45);
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    pointer-events: none;
+  }
+
+  .dm-currency-wrap input {
+    width: 100%;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    padding: 9px 11px 9px 22px;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    border-radius: 2px;
+    box-sizing: border-box;
+  }
+
+  .dm-donate-btn {
+    width: 100%;
+    background: #f2cf1d;
+    color: #000;
+    border: none;
+    padding: 13px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+  }
+
+  .dm-donate-btn:hover {
+    background: #e8c419;
+  }
+
+  .dm-disclaimer {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 600px) {
+    .dm-box {
+      flex-direction: column;
+      max-height: 92vh;
+    }
+    .dm-left {
+      flex: 0 0 180px;
+      min-height: 180px;
+    }
+    .dm-right {
+      padding: 20px 16px;
+    }
+  }
