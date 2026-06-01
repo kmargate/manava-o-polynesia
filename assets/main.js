@@ -124,3 +124,67 @@ function toggleNav(btn) {
       }
     }, { passive: true });
   }());
+
+  /* ─── DONATE MODAL ─── */
+  (function () {
+    var modal;
+    var selectedFreq = 'once';
+    var selectedAmt = 50;
+
+    function init() {
+      modal = document.getElementById('donate-modal');
+    }
+
+    window.openDonateModal = function () {
+      if (!modal) init();
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeDonateModal = function () {
+      if (!modal) return;
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    window.dmOverlayClick = function (e) {
+      if (e.target === modal) closeDonateModal();
+    };
+
+    window.dmSetFreq = function (btn) {
+      modal.querySelectorAll('.dm-tab').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      selectedFreq = btn.dataset.freq;
+    };
+
+    window.dmSelectAmt = function (btn) {
+      modal.querySelectorAll('.dm-amt').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var other = document.getElementById('dm-other-wrap');
+      if (btn.dataset.amount === 'other') {
+        selectedAmt = 'other';
+        other.style.display = 'block';
+        document.getElementById('dm-custom-amt').focus();
+      } else {
+        selectedAmt = parseInt(btn.dataset.amount, 10);
+        other.style.display = 'none';
+      }
+    };
+
+    window.dmSubmit = function () {
+      var amt = selectedAmt === 'other'
+        ? parseFloat(document.getElementById('dm-custom-amt').value)
+        : selectedAmt;
+      if (!amt || amt <= 0) {
+        document.getElementById('dm-custom-amt').focus();
+        return;
+      }
+      // TODO: replace with real payment processor URL
+      // e.g. window.open('https://donate.stripe.com/...?amount=' + Math.round(amt * 100), '_blank');
+      alert('Donation flow coming soon!\nAmount: $' + amt + ' (' + selectedFreq + ')');
+    };
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal && modal.classList.contains('open')) closeDonateModal();
+    });
+  }());
