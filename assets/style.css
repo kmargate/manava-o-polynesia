@@ -1442,12 +1442,23 @@
     min-height: 420px;
   }
 
-  .dm-img {
+  .dm-slides {
+    position: absolute;
+    inset: 0;
+  }
+
+  .dm-slide {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  .dm-slide.active {
+    opacity: 1;
   }
 
   .dm-impact {

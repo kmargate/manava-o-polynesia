@@ -130,21 +130,31 @@ function toggleNav(btn) {
     var modal;
     var selectedFreq = 'once';
     var selectedAmt = 50;
+    var slides, currentSlide = 0, slideTimer;
+
+    function advanceSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
 
     function init() {
       modal = document.getElementById('donate-modal');
+      slides = modal.querySelectorAll('.dm-slide');
     }
 
     window.openDonateModal = function () {
       if (!modal) init();
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
+      if (slides && slides.length > 1) slideTimer = setInterval(advanceSlide, 4000);
     };
 
     window.closeDonateModal = function () {
       if (!modal) return;
       modal.classList.remove('open');
       document.body.style.overflow = '';
+      clearInterval(slideTimer);
     };
 
     window.dmOverlayClick = function (e) {
