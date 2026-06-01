@@ -52,7 +52,7 @@
       <a href="/events.html">Events</a>
       <a href="/gallery.html">Gallery</a>
       <a class="cur" href="/contact.html">Contact</a>
-      <a class="nav-donate">Donate</a>
+      <a class="nav-donate" onclick="openDonateModal()">Donate</a>
     </div>
   </nav>
 
@@ -220,5 +220,56 @@
     });
   }
 </script>
+
+<div id="donate-modal" class="dm-overlay" onclick="dmOverlayClick(event)">
+  <div class="dm-box" role="dialog" aria-modal="true" aria-label="Donate to Mānava O Polynesia">
+    <button class="dm-close" onclick="closeDonateModal()" aria-label="Close">&times;</button>
+    <div class="dm-left">
+      <div class="dm-slides">
+      <img src="/images/donate_kiki_raina_2026.jpg" alt="Mānava O Polynesia performers" class="dm-slide active">
+      <img src="/images/donate_group_leis_2023.jpg" alt="Mānava O Polynesia performers" class="dm-slide">
+      <img src="/images/donate_graduation_may_2026.JPG" alt="Mānava O Polynesia performers" class="dm-slide">
+      <img src="/images/donate_community_service_july_2024.jpg" alt="Mānava O Polynesia performers" class="dm-slide">
+      <img src="/images/donate_guam_lib_2024.JPG" alt="Mānava O Polynesia performers" class="dm-slide">
+      <img src="/images/donate_denver_sept_2024.jpeg" alt="Mānava O Polynesia performers" class="dm-slide">
+      <img src="/images/donate_maui_fundraiser_2023.jpeg" alt="Mānava O Polynesia performers" class="dm-slide">
+    </div>
+      <div class="dm-impact">
+        <div class="eyebrow" style="color:#f2cf1d;font-size:13px;font-weight:700;">Your Impact</div>
+        <h2 class="dm-impact-title">Every gift keeps the spirit of the Pacific alive</h2>
+        <p class="dm-impact-body">Your support helps preserve Hawaiian, Tahitian, Samoan, Tongan, and Māori traditions — and shares them with Colorado Springs for generations to come.</p>
+      </div>
+    </div>
+    <div class="dm-right">
+      <div class="eyebrow" style="color:#f2cf1d;margin-bottom:4px;">Support Our Mission</div>
+      <h3 class="dm-title">Make a Gift</h3>
+      <div class="dm-tabs" role="tablist">
+        <button class="dm-tab active" onclick="dmSetFreq(this)" data-freq="once">Give Once</button>
+        <button class="dm-tab" onclick="dmSetFreq(this)" data-freq="monthly">Monthly</button>
+        <button class="dm-tab" onclick="dmSetFreq(this)" data-freq="annually">Annually</button>
+      </div>
+      <div class="dm-amounts">
+        <button class="dm-amt" onclick="dmSelectAmt(this)" data-amount="5">$5</button>
+        <button class="dm-amt" onclick="dmSelectAmt(this)" data-amount="20">$20</button>
+        <button class="dm-amt active" onclick="dmSelectAmt(this)" data-amount="50">$50</button>
+        <button class="dm-amt" onclick="dmSelectAmt(this)" data-amount="100">$100</button>
+        <button class="dm-amt" onclick="dmSelectAmt(this)" data-amount="250">$250</button>
+        <button class="dm-amt" onclick="dmSelectAmt(this)" data-amount="500">$500</button>
+        <button class="dm-amt dm-amt-other" onclick="dmSelectAmt(this)" data-amount="other">Other</button>
+      </div>
+      <div class="dm-other-wrap" id="dm-other-wrap">
+        <div class="fg">
+          <label for="dm-custom-amt">Amount (USD)</label>
+          <div class="dm-currency-wrap">
+            <span class="dm-currency-sym">$</span>
+            <input type="number" id="dm-custom-amt" min="1" step="1" placeholder="Enter amount">
+          </div>
+        </div>
+      </div>
+      <button class="dm-donate-btn" onclick="dmSubmit()">Donate Now</button>
+      <p class="dm-disclaimer">Mānava O Polynesia is a 501(c)(3) nonprofit.<br>Your donation may be tax-deductible.</p>
+    </div>
+  </div>
+</div>
 </body>
 </html>
