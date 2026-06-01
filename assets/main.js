@@ -147,7 +147,7 @@ function toggleNav(btn) {
       if (!modal) init();
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
-      if (slides && slides.length > 1) slideTimer = setInterval(advanceSlide, 4000);
+      if (slides && slides.length > 1) slideTimer = setInterval(advanceSlide, 7000);
     };
 
     window.closeDonateModal = function () {
