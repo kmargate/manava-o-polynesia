@@ -1489,8 +1489,17 @@
 
   .dm-right {
     flex: 1;
-    padding: 32px 28px;
+    padding: 0;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dm-right iframe {
+    flex: 1;
+    border: none;
+    display: block;
+    min-height: 520px;
   }
 
   .dm-title {
@@ -1638,6 +1647,6 @@
       min-height: 180px;
     }
     .dm-right {
-      padding: 20px 16px;
+      padding: 0;
     }
   }
