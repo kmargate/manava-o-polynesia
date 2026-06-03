@@ -189,9 +189,9 @@ function toggleNav(btn) {
         document.getElementById('dm-custom-amt').focus();
         return;
       }
-      // TODO: replace with real payment processor URL
-      // e.g. window.open('https://donate.stripe.com/...?amount=' + Math.round(amt * 100), '_blank');
-      alert('Donation flow coming soon!\nAmount: $' + amt + ' (' + selectedFreq + ')');
+      var interval = selectedFreq === 'monthly' ? 'm' : 'o';
+      var url = 'https://donorbox.org/manava-website-donation?amount=' + amt + '&default_interval=' + interval;
+      window.open(url, '_blank');
     };
 
     document.addEventListener('keydown', function (e) {
