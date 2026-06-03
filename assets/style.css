@@ -1489,6 +1489,7 @@
 
   .dm-right {
     flex: 1;
+    min-height: 0;
     padding: 0;
     overflow-y: auto;
     display: flex;
@@ -1499,7 +1500,7 @@
     flex: 1;
     border: none;
     display: block;
-    min-height: 520px;
+    min-height: 400px;
   }
 
   .dm-title {
