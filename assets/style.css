@@ -1496,7 +1496,8 @@
     flex-direction: column;
   }
 
-  .dm-right iframe {
+  .dm-right iframe,
+  .dm-right dbox-widget {
     flex: 1;
     border: none;
     display: block;
