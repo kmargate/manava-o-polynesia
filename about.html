@@ -161,32 +161,8 @@
       </div>
     </div>
     <div class="dm-right">
-      <div class="eyebrow" style="color:#f2cf1d;margin-bottom:4px;">Support Our Mission</div>
-      <h3 class="dm-title">Make a Gift</h3>
-      <div class="dm-tabs" role="tablist">
-        <button class="dm-tab active" onclick="dmSetFreq(this)" data-freq="once">Give Once</button>
-        <button class="dm-tab" onclick="dmSetFreq(this)" data-freq="monthly">Monthly</button>
-      </div>
-      <div class="dm-amounts">
-        <button class="dm-amt" onclick="dmSelectAmt(this)" data-amount="5">$5</button>
-        <button class="dm-amt" onclick="dmSelectAmt(this)" data-amount="20">$20</button>
-        <button class="dm-amt active" onclick="dmSelectAmt(this)" data-amount="50">$50</button>
-        <button class="dm-amt" onclick="dmSelectAmt(this)" data-amount="100">$100</button>
-        <button class="dm-amt" onclick="dmSelectAmt(this)" data-amount="250">$250</button>
-        <button class="dm-amt" onclick="dmSelectAmt(this)" data-amount="500">$500</button>
-        <button class="dm-amt dm-amt-other" onclick="dmSelectAmt(this)" data-amount="other">Other</button>
-      </div>
-      <div class="dm-other-wrap" id="dm-other-wrap">
-        <div class="fg">
-          <label for="dm-custom-amt">Amount (USD)</label>
-          <div class="dm-currency-wrap">
-            <span class="dm-currency-sym">$</span>
-            <input type="number" id="dm-custom-amt" min="1" step="1" placeholder="Enter amount">
-          </div>
-        </div>
-      </div>
-      <button class="dm-donate-btn" onclick="dmSubmit()">Donate Now</button>
-      <p class="dm-disclaimer">Mānava O Polynesia is a 501(c)(3) nonprofit.<br>Your donation may be tax-deductible.</p>
+      <script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+      <iframe src="https://donorbox.org/embed/manava-website-donation" name="donorbox" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" width="100%" style="min-width:250px; max-height:none!important;"></iframe>
     </div>
   </div>
 </div>

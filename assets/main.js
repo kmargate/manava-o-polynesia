@@ -128,8 +128,6 @@ function toggleNav(btn) {
   /* ─── DONATE MODAL ─── */
   (function () {
     var modal;
-    var selectedFreq = 'once';
-    var selectedAmt = 50;
     var slides, currentSlide = 0, slideTimer;
 
     function advanceSlide() {
@@ -159,39 +157,6 @@ function toggleNav(btn) {
 
     window.dmOverlayClick = function (e) {
       if (e.target === modal) closeDonateModal();
-    };
-
-    window.dmSetFreq = function (btn) {
-      modal.querySelectorAll('.dm-tab').forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      selectedFreq = btn.dataset.freq;
-    };
-
-    window.dmSelectAmt = function (btn) {
-      modal.querySelectorAll('.dm-amt').forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      var other = document.getElementById('dm-other-wrap');
-      if (btn.dataset.amount === 'other') {
-        selectedAmt = 'other';
-        other.style.display = 'block';
-        document.getElementById('dm-custom-amt').focus();
-      } else {
-        selectedAmt = parseInt(btn.dataset.amount, 10);
-        other.style.display = 'none';
-      }
-    };
-
-    window.dmSubmit = function () {
-      var amt = selectedAmt === 'other'
-        ? parseFloat(document.getElementById('dm-custom-amt').value)
-        : selectedAmt;
-      if (!amt || amt <= 0) {
-        document.getElementById('dm-custom-amt').focus();
-        return;
-      }
-      var interval = selectedFreq === 'monthly' ? 'm' : 'o';
-      var url = 'https://donorbox.org/manava-website-donation?amount=' + amt + '&default_interval=' + interval;
-      window.open(url, '_blank');
     };
 
     document.addEventListener('keydown', function (e) {
