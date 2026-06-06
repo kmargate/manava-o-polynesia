@@ -148,24 +148,54 @@
     <button class="dm-close" onclick="closeDonateModal()" aria-label="Close">&times;</button>
     <div class="dm-left">
       <div class="dm-slides">
-      <img src="/images/donate_kiki_raina_2026.jpg" alt="Mānava O Polynesia performers" class="dm-slide active">
-      <img src="/images/donate_group_leis_2023.jpg" alt="Mānava O Polynesia performers" class="dm-slide">
-      <img src="/images/donate_graduation_may_2026.JPG" alt="Mānava O Polynesia performers" class="dm-slide">
-      <img src="/images/donate_community_service_july_2024.jpg" alt="Mānava O Polynesia performers" class="dm-slide">
-      <img src="/images/donate_guam_lib_2024.JPG" alt="Mānava O Polynesia performers" class="dm-slide">
-      <img src="/images/donate_denver_sept_2024.jpeg" alt="Mānava O Polynesia performers" class="dm-slide">
-      <img src="/images/donate_maui_fundraiser_2023.jpeg" alt="Mānava O Polynesia performers" class="dm-slide">
-    </div>
-      <div class="dm-impact">
-        <div class="eyebrow" style="color:#f2cf1d;font-size:13px;font-weight:700;">Your Impact</div>
-        <h2 class="dm-impact-title">Every gift keeps the spirit of the Pacific alive</h2>
-        <p class="dm-impact-body">Your support helps preserve Hawaiian, Tahitian, Samoan, Tongan, and Māori traditions — and shares them with Colorado Springs for generations to come.</p>
+        <img src="/images/donate_kiki_raina_2026.jpg" alt="Mānava O Polynesia performers" class="dm-slide active">
+        <img src="/images/donate_group_leis_2023.jpg" alt="Mānava O Polynesia performers" class="dm-slide">
+        <img src="/images/donate_graduation_may_2026.JPG" alt="Mānava O Polynesia performers" class="dm-slide">
+        <img src="/images/donate_community_service_july_2024.jpg" alt="Mānava O Polynesia performers" class="dm-slide">
+        <img src="/images/donate_guam_lib_2024.JPG" alt="Mānava O Polynesia performers" class="dm-slide">
+        <img src="/images/donate_denver_sept_2024.jpeg" alt="Mānava O Polynesia performers" class="dm-slide">
+        <img src="/images/donate_maui_fundraiser_2023.jpeg" alt="Mānava O Polynesia performers" class="dm-slide">
+      </div>
+      <div class="dm-org-info">
+        <h2 class="dm-org-name">Mānava O Polynesia</h2>
+        <div class="dm-org-tagline">Supporting Mānava O Polynesia</div>
+        <p class="dm-org-body">Mānava O Polynesia is a 501(c)(3) nonprofit in Colorado Springs sharing Hawaiian, Tahitian, Samoan, Tongan, and Māori culture through dance, music, and storytelling. Your gift keeps the spirit of the Pacific alive for generations to come.</p>
       </div>
     </div>
     <div class="dm-right">
+      <div class="dm-secure-hdr">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1L2 3.5V7c0 2.76 2.13 5.35 5 6 2.87-.65 5-3.24 5-6V3.5L7 1z" fill="#27ae60"/></svg>
+        Secure donation
+      </div>
       <script type="module" src="https://donorbox.org/widgets.js" async></script>
       <dbox-widget campaign="manava-website-donation" type="donation_form" enable-auto-scroll="true"></dbox-widget>
     </div>
+  </div>
+  <div class="dm-footer-links">
+    <span class="dm-bubble-wrap">
+      <a href="#" class="dm-footer-link dm-footer-link--strong" onclick="toggleDmSecureBubble(event)">Is my donation secure?</a>
+      <div class="dm-bubble" id="dm-secure-bubble" role="tooltip">
+        <strong class="dm-bubble-heading">Is my donation secure?</strong>
+        <p>Your payment is secured with SSL encryption and processed directly by Stripe &#8212; your financial information never touches our servers.</p>
+        <div class="dm-bubble-arrow"></div>
+      </div>
+    </span>
+    <span class="dm-bubble-wrap">
+      <a href="#" class="dm-footer-link dm-footer-link--strong" onclick="toggleDmTaxBubble(event)">Is this donation tax-deductible?</a>
+      <div class="dm-bubble" id="dm-tax-bubble" role="tooltip">
+        <strong class="dm-bubble-heading">Is this donation tax-deductible?</strong>
+        <p>We are a tax-exempt organization. Your contribution may be tax-deductible &#8212; please consult your tax advisor for guidance specific to your situation. A donation receipt will be emailed to you; please retain it for your records.</p>
+        <div class="dm-bubble-arrow"></div>
+      </div>
+    </span>
+    <span class="dm-bubble-wrap">
+      <a href="#" class="dm-footer-link dm-footer-link--strong" onclick="toggleDmCancelBubble(event)">Can I cancel my recurring donation?</a>
+      <div class="dm-bubble" id="dm-cancel-bubble" role="tooltip">
+        <strong class="dm-bubble-heading">Can I cancel my recurring donation?</strong>
+        <p>You&#8217;re always in control of your recurring donation &#8212; change or cancel it anytime.</p>
+        <div class="dm-bubble-arrow"></div>
+      </div>
+    </span>
   </div>
 </div>
 </body>

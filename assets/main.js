@@ -163,3 +163,32 @@ function toggleNav(btn) {
       if (e.key === 'Escape' && modal && modal.classList.contains('open')) closeDonateModal();
     });
   }());
+
+  /* ─── DONATION BUBBLES ─── */
+  (function () {
+    function closeAllBubbles() {
+      document.querySelectorAll('.dm-bubble.open').forEach(function (b) {
+        b.classList.remove('open');
+      });
+    }
+
+    function toggleBubble(e, id) {
+      e.preventDefault();
+      e.stopPropagation();
+      var b = document.getElementById(id);
+      if (!b) return;
+      var isOpen = b.classList.contains('open');
+      closeAllBubbles();
+      if (!isOpen) b.classList.add('open');
+    }
+
+    window.toggleDmSecureBubble = function (e) { toggleBubble(e, 'dm-secure-bubble'); };
+    window.toggleDmTaxBubble    = function (e) { toggleBubble(e, 'dm-tax-bubble'); };
+    window.toggleDmCancelBubble = function (e) { toggleBubble(e, 'dm-cancel-bubble'); };
+
+    document.addEventListener('click', closeAllBubbles);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAllBubbles();
+    });
+  }());
