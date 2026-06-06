@@ -17,6 +17,8 @@
     color: var(--color-text-primary);
     background: #0a0a0a;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   .nav {
@@ -773,6 +775,7 @@
   }
 
   .footer {
+    margin-top: auto;
     background: #000;
     border-top: 1px solid #f2cf1d;
     padding: 24px 40px;
