@@ -58,7 +58,7 @@
 
   // Draw the ray in.
   if (strokes.length) {
-    tl.to(strokes, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut', stagger: 0.06 }, 0);
+    tl.to(strokes, { strokeDashoffset: 0, duration: 2.1, ease: 'power2.inOut', stagger: 0.084 }, 0);
   }
 
   // Stagger the hero copy in, part-way through the draw.
