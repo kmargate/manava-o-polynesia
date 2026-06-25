@@ -376,6 +376,29 @@
     margin-bottom: 14px;
   }
 
+  .founder-wide {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 28px;
+  }
+
+  .founder-wide .f-av {
+    margin-bottom: 0;
+  }
+
+  .founder-wide .f-text {
+    flex: 1;
+  }
+
+  .founders-pair {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
   .team-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1080,6 +1103,24 @@
     }
 
     .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .founder-wide {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .founder-wide .f-av {
+      margin-bottom: 14px;
+    }
+
+    .founder-wide .f-bio {
+      text-align: left;
+    }
+
+    .founders-pair {
       grid-template-columns: 1fr;
     }
 
