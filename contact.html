@@ -148,6 +148,24 @@
 </div>
 <script src="assets/main.js"></script>
 <script>
+  // Pre-select the "I'm interested in" dropdown from a ?interest= deep link
+  // (e.g. the home hero's "Dance With Us" button -> ?interest=classes).
+  (function preselectInterest() {
+    var map = {
+      performance: 'Attending a performance',
+      booking: 'Booking us for an event',
+      classes: 'Dance classes',
+      volunteer: 'Volunteering',
+      donate: 'Donating / Sponsoring'
+    };
+    var want = map[new URLSearchParams(window.location.search).get('interest')];
+    if (!want) return;
+    var sel = document.getElementById('cf-interest');
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].text === want) { sel.selectedIndex = i; break; }
+    }
+  })();
+
   function updateCharCount() {
     var ta = document.getElementById('cf-message');
     var counter = document.getElementById('cf-char-count');
