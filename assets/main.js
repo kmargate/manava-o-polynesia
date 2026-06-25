@@ -164,6 +164,80 @@ function toggleNav(btn) {
     });
   }());
 
+  /* ─── GALLERY LIGHTBOX ─── */
+  (function () {
+    var overlay, stage, caption, prevBtn, nextBtn, idx = 0;
+
+    function init() {
+      overlay = document.getElementById('gallery-lightbox');
+      if (!overlay) return false;
+      stage = overlay.querySelector('.lb-stage');
+      caption = overlay.querySelector('.lb-caption');
+      prevBtn = overlay.querySelector('.lb-prev');
+      nextBtn = overlay.querySelector('.lb-next');
+      return true;
+    }
+
+    function render() {
+      var items = window.galleryItems || [];
+      var item = items[idx];
+      if (!item) return;
+      var many = items.length > 1;
+      prevBtn.style.display = many ? '' : 'none';
+      nextBtn.style.display = many ? '' : 'none';
+      if (item.type === 'video') {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://drive.google.com/file/d/' + item.fileId + '/preview';
+        iframe.allow = 'autoplay';
+        iframe.allowFullscreen = true;
+        stage.innerHTML = '';
+        stage.appendChild(iframe);
+      } else {
+        var img = document.createElement('img');
+        img.src = 'https://drive.google.com/thumbnail?id=' + item.fileId + '&sz=w1600';
+        img.alt = item.label || '';
+        stage.innerHTML = '';
+        stage.appendChild(img);
+      }
+      caption.textContent = item.label || '';
+    }
+
+    window.openLightbox = function (i) {
+      if (!overlay && !init()) return;
+      var items = window.galleryItems || [];
+      if (!items.length) return;
+      idx = (i % items.length + items.length) % items.length;
+      render();
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeLightbox = function () {
+      if (!overlay) return;
+      overlay.classList.remove('open');
+      stage.innerHTML = '';
+      document.body.style.overflow = '';
+    };
+
+    window.lbStep = function (delta) {
+      var items = window.galleryItems || [];
+      if (!items.length) return;
+      idx = (idx + delta + items.length) % items.length;
+      render();
+    };
+
+    window.lbOverlayClick = function (e) {
+      if (e.target === overlay) window.closeLightbox();
+    };
+
+    document.addEventListener('keydown', function (e) {
+      if (!overlay || !overlay.classList.contains('open')) return;
+      if (e.key === 'Escape') window.closeLightbox();
+      else if (e.key === 'ArrowLeft') window.lbStep(-1);
+      else if (e.key === 'ArrowRight') window.lbStep(1);
+    });
+  }());
+
   /* ─── DONATION BUBBLES ─── */
   (function () {
     function closeAllBubbles() {
