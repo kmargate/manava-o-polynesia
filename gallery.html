@@ -210,24 +210,28 @@
           return;
         }
         var html = '', itemCount = 0;
+        window.galleryItems = [];
         rows.forEach(function(r) {
-          var fileUrl = r[0] || '', label = esc(r[1] || '');
+          var fileUrl = r[0] || '', rawLabel = r[1] || '', label = esc(rawLabel);
           var tall = (r[2] || '').trim().toLowerCase() === 'yes';
           var type = (r[3] || '').trim().toLowerCase() === 'video' ? 'video' : 'image';
           var fileId = fileUrl.match(/\/d\/([^/]+)/);
           if (!fileId) return;
+          var idx = window.galleryItems.length;
+          window.galleryItems.push({ fileId: fileId[1], type: type, label: rawLabel });
           var role = ROLES[itemCount % 6];
           var classes = 'gc ' + role + (tall ? ' tall' : '') + (type === 'video' ? ' video' : '');
-          if (type === 'video') {
-            var src = 'https://drive.google.com/file/d/' + fileId[1] + '/preview';
-            html += '<div class="' + classes + '"><iframe src="' + src + '" class="gc-iframe" allowfullscreen></iframe></div>';
-          } else {
-            var src = 'https://drive.google.com/thumbnail?id=' + fileId[1] + '&sz=w800';
-            html += '<div class="' + classes + '"><img src="' + src + '" class="gc-img" alt="' + label + '" loading="lazy" /><div class="gh"><div class="gl">' + label + '</div></div></div>';
-          }
+          var thumb = 'https://drive.google.com/thumbnail?id=' + fileId[1] + '&sz=w800';
+          var playBadge = type === 'video' ? '<div class="gc-play" aria-hidden="true">&#9658;</div>' : '';
+          html += '<div class="' + classes + '" data-idx="' + idx + '"><img src="' + thumb + '" class="gc-img" alt="' + label + '" loading="lazy" />' + playBadge + '<div class="gh"><div class="gl">' + label + '</div></div></div>';
           itemCount++;
         });
         el.innerHTML = html;
+        el.addEventListener('click', function(e) {
+          var tile = e.target.closest('.gc');
+          if (!tile || tile.dataset.idx === undefined) return;
+          window.openLightbox(parseInt(tile.dataset.idx, 10));
+        });
       })
       .catch(function() {
         el.innerHTML = '<p style="color:rgba(255,255,255,0.4);font-family:Arial,sans-serif;font-size:14px;padding:16px 0">Gallery coming soon.</p>';
@@ -235,6 +239,14 @@
   }
   loadGallery();
 </script>
+
+<div id="gallery-lightbox" class="lb-overlay" onclick="lbOverlayClick(event)">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" onclick="lbStep(-1)" aria-label="Previous">&lsaquo;</button>
+  <div class="lb-stage" role="dialog" aria-modal="true" aria-label="Gallery viewer"></div>
+  <button class="lb-nav lb-next" onclick="lbStep(1)" aria-label="Next">&rsaquo;</button>
+  <div class="lb-caption"></div>
+</div>
 
 <div id="donate-modal" class="dm-overlay" onclick="dmOverlayClick(event)">
   <div class="dm-box" role="dialog" aria-modal="true" aria-label="Donate to Mānava O Polynesia">
