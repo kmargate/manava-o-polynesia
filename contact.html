@@ -77,9 +77,8 @@
             <div class="fg"><label>I'm interested in</label><select id="cf-interest">
                 <option>Attending a performance</option>
                 <option>Booking us for an event</option>
-                <option>Dance classes</option>
-                <option>Volunteering</option>
-                <option>Donating / Sponsoring</option>
+                <option>Dance/Drumming classes</option>
+                <option>Donating/Sponsoring</option>
               </select></div>
             <div class="fg"><label>Message</label><textarea id="cf-message" placeholder="Tell us more..." maxlength="2000" oninput="updateCharCount()"></textarea>
               <div id="cf-char-count" style="font-size:11px;font-family:Arial,sans-serif;color:rgba(255,255,255,0.4);text-align:right;margin-top:4px;">0 / 2000</div>
@@ -154,9 +153,8 @@
     var map = {
       performance: 'Attending a performance',
       booking: 'Booking us for an event',
-      classes: 'Dance classes',
-      volunteer: 'Volunteering',
-      donate: 'Donating / Sponsoring'
+      classes: 'Dance/Drumming classes',
+      donate: 'Donating/Sponsoring'
     };
     var want = map[new URLSearchParams(window.location.search).get('interest')];
     if (!want) return;
