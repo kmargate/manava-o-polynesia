@@ -55,6 +55,10 @@
   transform-origin: center;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
+/* Default hover zoom — applies to every tile that has no bespoke transform */
+.gc .gc-img { transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.gc:hover .gc-img { transform: scale(1.07); }
+/* Hero + accent-b keep their bespoke resting tilt and stronger zoom */
 .gc.gc-hero:hover .gc-img { transform: scale(1.1) rotate(0deg); }
 .gc.gc-accent-b:hover .gc-img { transform: scale(1.08) rotate(0deg); }
 .gc.gc-hero::before,
@@ -95,6 +99,7 @@
   .gc.gc-banner { grid-column: span 2; grid-row: span 1; }
   .gc.tall { grid-row: span 3 !important; }
   .gc.gc-hero .gc-img, .gc.gc-accent-b .gc-img,
+  .gc:hover .gc-img,
   .gc.gc-hero:hover .gc-img, .gc.gc-accent-b:hover .gc-img { transform: none; }
   .gc.gc-hero::before, .gc.gc-banner::before, .gc.gc-left::before { display: none; }
 }
