@@ -61,9 +61,7 @@
 /* Hero + accent-b keep their bespoke resting tilt and stronger zoom */
 .gc.gc-hero:hover .gc-img { transform: scale(1.1) rotate(0deg); }
 .gc.gc-accent-b:hover .gc-img { transform: scale(1.08) rotate(0deg); }
-.gc.gc-hero::before,
-.gc.gc-banner::before,
-.gc.gc-left::before {
+.gc::before {
   content: '';
   position: absolute;
   inset: 8px;
@@ -101,7 +99,6 @@
   .gc.gc-hero .gc-img, .gc.gc-accent-b .gc-img,
   .gc:hover .gc-img,
   .gc.gc-hero:hover .gc-img, .gc.gc-accent-b:hover .gc-img { transform: none; }
-  .gc.gc-hero::before, .gc.gc-banner::before, .gc.gc-left::before { display: none; }
 }
 @media (max-width: 480px) {
   .gal-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
